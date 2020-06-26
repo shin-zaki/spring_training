@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>社員照会</title>
+<style type="text/css">
+body {
+	margin-left: 10%;
+}
+
+.search {
+	border-style: none;
+}
+
+.result {
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+
+.header {
+	border: solid 1px #000000;
+	background-color: #cccccc;
+	text-align: center;
+}
+#resultEmployeesnumber {
+	text-align: left;
+	width: 90px;
+}
+#resultEmployeesname {
+	text-align: left;
+	width: 450px;
+}
+
+#headerEmployeesnumber {
+	text-align: center;
+	width: 90px;
+}
+
+#headerEmployeesname {
+	text-align: center;
+	width: 450px;
+}
+
+
+
+</style>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+</head>
+	<h1>社員照会</h1>
+	<h2>検索項目</h2>
+	<form id="form" action="" method="post" >
+		<table class="search">
+			<tr>
+				<td>社員番号:</td>
+				<td><input type="text" name="employeesnumber" th:value="${employeesnumber}"></td>
+				<td><input type="submit" value="検索"></td>
+			</tr>
+			<tr>
+				<td>社員名:</td>
+				<td><input type="text" name="employeesname" th:value="${employeesname}"></td>
+				<td><input type="reset" id="reset-button" value="クリア"></td>
+			</tr>
+		</table>
+	</form>
+	<table class="result" border="1">
+		<tr class="header">
+			<td id="headerEmployeesnumber">社員番号</td>
+			<td id="headerEmployeesname">社員名</td>
+		</tr>
+		<tr th:each="data : ${result}" id="resultList">
+			<td id="resultEmployeesnumber" th:text="${data.employeesnumber}" />
+			<td id="resultEmployeesname" th:text="${data.employeesname}" />
+		</tr>
+	</table>
+</body>
+</html>
+
